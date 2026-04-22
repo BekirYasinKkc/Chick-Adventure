@@ -30,7 +30,7 @@ The project focuses on building core gameplay mechanics such as movement, intera
 ## 📷 Current Build
 
 <p align="center">
-  <img src="images/chick_adventure.png" width="600">
+  <img src="Chick.png" width="600">
 </p>
 
 ---
