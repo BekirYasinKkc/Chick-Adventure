@@ -40,6 +40,7 @@ The project focuses on building core gameplay mechanics such as movement, intera
 - Unity (3D)
 - C#
 - DOTween (animation system)
+- Unity Asset Store
 
 ---
 
