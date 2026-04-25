@@ -16,6 +16,8 @@ namespace BYK
         [SerializeField] private KeyCode jumpKey;
         [SerializeField] private float jumpForce;
         [SerializeField] private float jumpCooldown;
+        [SerializeField] private float airMultiplier;
+        [SerializeField] private float airDrag;
         [SerializeField] private bool canJump;
 
         [Header("Slide Settings")]
@@ -28,6 +30,7 @@ namespace BYK
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float groundDrag;
 
+        private StateController stateController;
 
         private Rigidbody playerRigidbody;
 
@@ -39,6 +42,7 @@ namespace BYK
 
         private void Awake()
         {
+            stateController = GetComponent<StateController>();
             playerRigidbody = GetComponent<Rigidbody>();
             playerRigidbody.freezeRotation = true;
         }
@@ -46,6 +50,7 @@ namespace BYK
         private void Update()
         {
             SetInput();
+            SetStates();
             SetPlayerDrag();
             LimitPlayerSpeed(); 
         }
@@ -76,30 +81,53 @@ namespace BYK
             }
         }
 
+        private void SetStates()
+        {
+            var MovementDirection = GetMovementDirection();
+            var isGrouded = IsGrounded();
+            var isSliding = IsSliding();
+            var currentState = stateController.GetCurrentState();
+
+            var newState = currentState switch
+            {
+                _ when MovementDirection == Vector3.zero && isGrouded && !isSliding => PlayerState.Idle,
+                _ when MovementDirection != Vector3.zero && isGrouded && !isSliding => PlayerState.Move,
+                _ when MovementDirection != Vector3.zero && isGrouded && isSliding => PlayerState.Slide,
+                _ when MovementDirection == Vector3.zero && isGrouded && isSliding => PlayerState.SlideIdle,
+                _ when !canJump && !isGrouded => PlayerState.Jump,
+                _ => currentState
+            };
+            if (newState != currentState)
+            {
+                stateController.ChangeState(newState);
+            } 
+        }
+
         private void SetPlayerMovement()
         {
             MovementDirection = orientationTransform.forward *
                 verticalInput + orientationTransform.right * horizontalInput;
-            if (isSliding)
-            { 
-                playerRigidbody.AddForce(MovementDirection.normalized * MovementSpeed * slideMultiplier, ForceMode.Force);
-            }
-            else
+
+            float forceMultiplier = stateController.GetCurrentState() switch
             {
-                playerRigidbody.AddForce(MovementDirection.normalized * MovementSpeed, ForceMode.Force);
-            }
+                PlayerState.Move => 1f,
+                PlayerState.Slide => slideMultiplier,
+                PlayerState.Jump => airMultiplier,
+                _ => 1f
+            };
+
+            playerRigidbody.AddForce(MovementDirection.normalized * MovementSpeed * forceMultiplier, ForceMode.Force);
         }
 
         private void SetPlayerDrag()
         {
-            if (isSliding)
+            playerRigidbody.linearDamping = stateController.GetCurrentState() switch
             {
-                playerRigidbody.linearDamping = slideDrag;
-            }
-            else
-            {
-                playerRigidbody.linearDamping = groundDrag;
-            }
+                PlayerState.Move => groundDrag,
+                PlayerState.Slide => slideDrag,
+                PlayerState.Jump => airDrag,
+                _ => playerRigidbody.linearDamping
+            };
         }
 
         private void LimitPlayerSpeed()
@@ -128,6 +156,16 @@ namespace BYK
         private bool IsGrounded()
         {
             return Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
+        }
+
+        private Vector3 GetMovementDirection()
+        {
+            return MovementDirection.normalized;
+        }
+
+        private bool IsSliding()
+        {
+            return isSliding;
         }
     }
 }   
