@@ -11,7 +11,8 @@ The project focuses on building core gameplay mechanics such as movement, intera
 ## 🎮 Current Features
 
 - 🕹️ 3D player movement system
-- ⬆️ Jump & Slide mechanic 
+- ⬆️ Jump & Slide mechanic
+- 📷 Camera Follow System
 - 🎨 3D character (chick) and environment setup
 - ⚙️ Unity project structure with integrated tools (e.g. DOTween)
 
