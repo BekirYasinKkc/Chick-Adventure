@@ -55,7 +55,6 @@ The main goal at this stage is to implement and test **core gameplay mechanics**
 
 ## 🚀 Future Plans
 
-- Improve player physics and controls
 - Implement enemy AI behavior
 - Add interaction systems
 - Expand environment and visuals
