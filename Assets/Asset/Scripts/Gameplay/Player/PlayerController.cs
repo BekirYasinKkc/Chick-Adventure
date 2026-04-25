@@ -47,7 +47,7 @@ namespace BYK
         {
             SetInput();
             SetPlayerDrag();
-            LimitPlayerSpeed();
+            LimitPlayerSpeed(); 
         }
 
         private void FixedUpdate()
