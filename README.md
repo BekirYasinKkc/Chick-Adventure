@@ -13,9 +13,10 @@ The project focuses on building core gameplay mechanics such as movement, intera
 - 🕹️ Smooth 3D player movement system
 - ⬆️ Jump & Slide mechanic
 - 📷 Camera Follow System
-- 🎞️ Character animations (Idle, Run, Jump, Slide) 
+- 🎞️ Character animations (Idle, Move, Jump, Slide) 
 - 🎨 3D character (chick) and environment setup
-- ⚙️ Unity project structure with integrated tools (e.g. DOTween)
+- ⚙️ Clean Unity project structure
+- ✨ DOTween integration for animations
 
 ---
 
