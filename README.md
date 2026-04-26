@@ -10,7 +10,7 @@ The project focuses on building core gameplay mechanics such as movement, intera
 
 ## 🎮 Current Features
 
-- 🕹️ 3D player movement system
+- 🕹️ Smooth 3D player movement system
 - ⬆️ Jump & Slide mechanic
 - 📷 Camera Follow System
 - 🎨 3D character (chick) and environment setup
