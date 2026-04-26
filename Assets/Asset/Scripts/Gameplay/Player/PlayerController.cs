@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -5,6 +6,8 @@ namespace BYK
 {
     public class PlayerController : MonoBehaviour
     {
+        public event Action OnPlayerJumped;
+
         [Header("References")]
         [SerializeField] private Transform orientationTransform;
 
@@ -144,6 +147,7 @@ namespace BYK
 
         private void SetPlayerJumping()
         {
+            OnPlayerJumped?.Invoke();
             playerRigidbody.linearVelocity = new Vector3(playerRigidbody.linearVelocity.x, 0f, playerRigidbody.linearVelocity.z);
             playerRigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
