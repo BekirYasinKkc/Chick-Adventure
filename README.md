@@ -8,6 +8,15 @@ The project focuses on building core gameplay mechanics such as movement, intera
 
 ---
 
+🎥 Gameplay Preview  
+Here is a short preview of the current character movement system including animations:
+
+▶️ [Watch Gameplay Video](YOUR_VIDEO_LINK_HERE)
+
+*(The video showcases: idle, movement, jump, and slide animations.)*
+
+---
+
 ## 🎮 Current Features
 
 - 🕹️ Smooth 3D player movement system
