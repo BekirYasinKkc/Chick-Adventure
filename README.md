@@ -15,6 +15,10 @@ Here is a short preview of the current character movement system including anima
 
 *(The video showcases: idle, movement, jump, and slide animations.)*
 
+📁 Note:
+The raw video file needs to be downloaded because it is too large to be displayed directly in the browser.
+GitHub cannot preview this file size inline, so please download it to view the full gameplay.
+
 ---
 
 ## 🎮 Current Features
