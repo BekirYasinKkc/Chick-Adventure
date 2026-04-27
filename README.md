@@ -46,7 +46,7 @@ GitHub cannot preview this file size inline, so please download it to view the f
 ## 📷 Current Build
 
 <p align="center">
-  <img src="Chick.PNG" width="700">
+  <img src="Chick.PNG" width="600">
 </p>
 
 ---
