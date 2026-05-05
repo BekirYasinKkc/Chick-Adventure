@@ -13,7 +13,7 @@ Here is a short preview of the current character movement system including anima
 
 ▶️ [Watch Gameplay Video](Movie_002.mp4)
 
-*(The video showcases: idle, movement, jump, and slide animations.)*
+*(The video showcases: idle, movement, jump, and slide animations and Collectibles Items.)*
 
 📁 Note:
 The raw video file needs to be downloaded because it is too large to be displayed directly in the browser.
@@ -25,6 +25,7 @@ GitHub cannot preview this file size inline, so please download it to view the f
 
 - 🕹️ Smooth 3D player movement system
 - ⬆️ Jump & Slide mechanic
+- 🕹️ Collectible Items
 - 📷 Camera Follow System
 - 🎞️ Character animations (Idle, Move, Jump, Slide) 
 - 🎨 3D character (chick) and environment setup
@@ -36,7 +37,6 @@ GitHub cannot preview this file size inline, so please download it to view the f
 ## 🧠 Planned Features
 
 - 🐱 Enemy system (cat chasing the player)
-- 🌾 Resource collection (wheat system)
 - 🎯 Scoring & progression system
 - 🔊 Sound effects and UI
 - 🧩 Level design and game loop
