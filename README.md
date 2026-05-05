@@ -11,7 +11,7 @@ The project focuses on building core gameplay mechanics such as movement, intera
 🎥 Gameplay Preview  
 Here is a short preview of the current character movement system including animations:
 
-▶️ [Watch Gameplay Video](Movie_001.mp4)
+▶️ [Watch Gameplay Video](Movie_002.mp4)
 
 *(The video showcases: idle, movement, jump, and slide animations.)*
 
