@@ -37,6 +37,8 @@ namespace BYK
 
         private Rigidbody playerRigidbody;
 
+        private float startingMovementSpeed, startingJumpForce;
+
         private float horizontalInput, verticalInput;
 
         private Vector3 MovementDirection;
@@ -48,6 +50,9 @@ namespace BYK
             stateController = GetComponent<StateController>();
             playerRigidbody = GetComponent<Rigidbody>();
             playerRigidbody.freezeRotation = true;
+
+            startingMovementSpeed = MovementSpeed;
+            startingJumpForce = jumpForce;
         }
 
         private void Update()
@@ -156,7 +161,7 @@ namespace BYK
         {
             canJump = true;
         }
-
+        
         private bool IsGrounded()
         {
             return Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
@@ -170,6 +175,28 @@ namespace BYK
         private bool IsSliding()
         {
             return isSliding;
+        }
+
+        public void SetMovementSpeed(float speed, float duration)
+        {
+            MovementSpeed += speed;
+            Invoke(nameof(ResetMovementSpeed), duration);
+        }
+
+        private void ResetMovementSpeed()
+        {
+            MovementSpeed = startingMovementSpeed;
+        }
+
+        public void SetJumpForce(float Force, float duration)
+        {
+            jumpForce += Force;
+            Invoke(nameof(startingJumpForce), duration);
+        }
+
+        private void ResetJumpForce()
+        {
+            jumpForce = startingJumpForce;
         }
     }
 }   
